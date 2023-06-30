@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Card,
@@ -18,6 +18,24 @@ import ConfirmDialog from "../../components/confirm-dialog/ConfirmDialog";
 
 function Home() {
   const [openDelModal, setOpenDelModal] = useState(false);
+  const [greetingMessage, setGreetingMessage] = useState(false);
+
+  const setGreeting = () => {
+    const currentHour = new Date().getHours();
+    if (currentHour >= 5 && currentHour < 12) {
+      setGreetingMessage("Morning");
+    } else if (currentHour >= 12 && currentHour < 18) {
+      setGreetingMessage("Afternoon");
+    } else if (currentHour >= 18 && currentHour < 22) {
+      setGreetingMessage("Evening");
+    } else {
+      setGreetingMessage("Night");
+    }
+  };
+
+  useEffect(() => {
+    setGreeting();
+  }, []);
 
   const handleDelete = () => {
     console.log("Recipe deleted!");
@@ -58,7 +76,7 @@ function Home() {
             position="relative"
           >
             <Typography variant="h2" color="white" fontWeight="bold">
-              HI GOOD MOORNING
+              {`HI GOOD ${greetingMessage}`}
             </Typography>
             <Typography variant="body1" color="white">
               Total recipies: 10

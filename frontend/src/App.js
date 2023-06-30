@@ -4,6 +4,7 @@ import Home from "./pages/home/Home";
 import { Route, Routes } from "react-router-dom";
 import NewRecipe from "./pages/new-recipe/NewRecipe";
 import EditRecipe from "./pages/edit-recipe/EditRecipe";
+import ViewRecipe from "./pages/view-recipe/ViewRecipe";
 
 const theme = createTheme({
   palette: {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/add" element={<NewRecipe />}></Route>
           <Route path="/edit" element={<EditRecipe />}></Route>
+          <Route path="/view" element={<ViewRecipe />}></Route>
         </Routes>
       </div>
     </ThemeProvider>

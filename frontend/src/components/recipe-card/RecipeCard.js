@@ -17,23 +17,25 @@ function RecipeCard({ onClickEdit, onClickDelete }) {
   return (
     <Grid item xs={6} md={4} lg={3}>
       <Card sx={{ p: "10px", px: "5px" }}>
-        <CardMedia
-          component="img"
-          height="150px"
-          image={recipeImg}
-          sx={{ objectFit: "contain" }}
-        ></CardMedia>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
+        <Link to="/view" style={{ textDecoration: "none"}}>
+          <CardMedia
+            component="img"
+            height="150px"
+            image={recipeImg}
+            sx={{ objectFit: "contain" }}
+          ></CardMedia>
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              Lizard
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Lizards are a widespread group of squamate reptiles, with over
+              6,000 species, ranging across all continents except Antarctica
+            </Typography>
+          </CardContent>
+        </Link>
         <CardActions>
-          <Link to="/edit">
+          <Link to="/edit" style={{ textDecoration: "none" }}>
             <IconButton onClick={onClickEdit}>
               <EditNoteIcon></EditNoteIcon>
             </IconButton>

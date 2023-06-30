@@ -19,7 +19,6 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE" }) {
         justifyContent="center"
         display="flex"
         width="100%"
-        height="fit-content"
       >
         <Box width="60%" height="100%" bgcolor="white" p={5} pt={0}>
           <Stack direction="column">
