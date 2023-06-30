@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./pages/home/Home";
 import { Route, Routes } from "react-router-dom";
 import NewRecipe from "./pages/new-recipe/NewRecipe";
+import EditRecipe from "./pages/edit-recipe/EditRecipe";
 
 const theme = createTheme({
   palette: {
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/add" element={<NewRecipe />}></Route>
+          <Route path="/edit" element={<EditRecipe />}></Route>
         </Routes>
       </div>
     </ThemeProvider>

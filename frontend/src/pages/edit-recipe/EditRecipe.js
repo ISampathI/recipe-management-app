@@ -9,7 +9,7 @@ import NavBar from "../../components/nav-bar/NavBar";
 import backImg from "../../assets/img/food-table.png";
 import RecipeDataForm from "../../components/recipe-data-form/RecipeDataForm";
 
-function NewRecipe() {
+function EditRecipe() {
   const handleSubmit = (formData) => {
     console.log(formData);
   };
@@ -42,16 +42,16 @@ function NewRecipe() {
             alignItems="center"
           >
             <Typography variant="h2" zIndex="1" color="white">
-              ADD NEW RECIPE
+              EDIT THE RECIPE
             </Typography>
           </Stack>
         </Box>
         <Container>
-          <RecipeDataForm onSubmit={handleSubmit}></RecipeDataForm>
+          <RecipeDataForm onSubmit={handleSubmit} btnName="UPDATE"></RecipeDataForm>
         </Container>
       </Box>
     </Box>
   );
 }
 
-export default NewRecipe;
+export default EditRecipe;
