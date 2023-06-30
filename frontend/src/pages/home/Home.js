@@ -19,7 +19,7 @@ function Home() {
   return (
     <Box width="100vw" height="100vh" bgcolor="#F5F7F7" position="relative">
       <NavBar></NavBar>
-      <Box width="100wh" height="calc(100vh - 4rem)" overflow="auto">
+      <Box width="100wh" height="calc(100vh - 4rem)" overflow="auto" pb={10}>
         <Box
           sx={{
             backgroundImage: `url(${backImg})`,

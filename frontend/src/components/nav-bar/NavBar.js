@@ -3,7 +3,7 @@ import React from "react";
 import LunchDiningIcon from "@mui/icons-material/LunchDining";
 import SyncIcon from "@mui/icons-material/Sync";
 
-function NavBar() {
+function NavBar({ nav = false }) {
   return (
     <AppBar color="background" elevation="0" position="static">
       <Toolbar>
@@ -18,12 +18,16 @@ function NavBar() {
         >
           ReciSave
         </Typography>
-        <IconButton>
-          <SyncIcon></SyncIcon>
-        </IconButton>
-        <Button variant="contained" size="small" sx={{ color: "white" }}>
-          Add a recipe
-        </Button>
+        {!nav && (
+          <>
+            <IconButton>
+              <SyncIcon></SyncIcon>
+            </IconButton>
+            <Button variant="contained" size="small" sx={{ color: "white" }}>
+              Add a recipe
+            </Button>
+          </>
+        )}
       </Toolbar>
     </AppBar>
   );

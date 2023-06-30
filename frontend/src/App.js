@@ -1,6 +1,8 @@
 import { ThemeProvider, createTheme } from "@mui/material";
 import "./App.css";
 import Home from "./pages/home/Home";
+import { Route, Routes } from "react-router-dom";
+import NewRecipe from "./pages/new-recipe/NewRecipe";
 
 const theme = createTheme({
   palette: {
@@ -12,7 +14,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Home></Home>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/add" element={<NewRecipe />}></Route>
+        </Routes>
       </div>
     </ThemeProvider>
   );
