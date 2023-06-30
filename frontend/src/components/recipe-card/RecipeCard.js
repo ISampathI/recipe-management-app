@@ -11,8 +11,9 @@ import React from "react";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import recipeImg from "../../assets/img/recipe.png";
+import { Link } from "react-router-dom";
 
-function RecipeCard() {
+function RecipeCard({ onClickEdit, onClickDelete }) {
   return (
     <Grid item xs={6} md={4} lg={3}>
       <Card sx={{ p: "10px", px: "5px" }}>
@@ -32,10 +33,12 @@ function RecipeCard() {
           </Typography>
         </CardContent>
         <CardActions>
-          <IconButton>
-            <EditNoteIcon></EditNoteIcon>
-          </IconButton>
-          <IconButton>
+          <Link to="/edit">
+            <IconButton onClick={onClickEdit}>
+              <EditNoteIcon></EditNoteIcon>
+            </IconButton>
+          </Link>
+          <IconButton onClick={onClickDelete}>
             <DeleteOutlineIcon sx={{ color: "error.main" }}></DeleteOutlineIcon>
           </IconButton>
         </CardActions>

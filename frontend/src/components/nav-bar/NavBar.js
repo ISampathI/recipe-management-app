@@ -2,7 +2,6 @@ import {
   AppBar,
   Button,
   IconButton,
-  Link,
   Stack,
   Toolbar,
   Typography,
@@ -10,12 +9,13 @@ import {
 import React from "react";
 import LunchDiningIcon from "@mui/icons-material/LunchDining";
 import SyncIcon from "@mui/icons-material/Sync";
+import { Link } from "react-router-dom";
 
 function NavBar({ nav = false }) {
   return (
     <AppBar color="background" elevation="0" position="static">
       <Toolbar>
-        <Link component="span" style={{ textDecoration: "none", cursor:"pointer" }}>
+        <Link style={{ textDecoration: "none" }} to="/">
           <Stack direction="row">
             <LunchDiningIcon
               fontSize="large"
@@ -25,7 +25,7 @@ function NavBar({ nav = false }) {
               fontWeight="bold"
               fontSize="large"
               color="text.primary"
-              sx={{ ml: "5px", mt:"6px" }}
+              sx={{ ml: "5px", mt: "6px" }}
             >
               ReciSave
             </Typography>
@@ -36,13 +36,11 @@ function NavBar({ nav = false }) {
             <IconButton sx={{ ml: "auto" }}>
               <SyncIcon></SyncIcon>
             </IconButton>
-            <Button
-              variant="contained"
-              size="small"
-              sx={{ color: "white" }}
-            >
-              Add a recipe
-            </Button>
+            <Link style={{ textDecoration: "none" }} to="/add">
+              <Button variant="contained" size="small" sx={{ color: "white" }}>
+                Add a recipe
+              </Button>
+            </Link>
           </>
         )}
       </Toolbar>

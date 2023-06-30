@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Card,
@@ -14,8 +14,19 @@ import {
 import NavBar from "../../components/nav-bar/NavBar";
 import backImg from "../../assets/img/food-table.png";
 import RecipeCard from "../../components/recipe-card/RecipeCard";
+import ConfirmDialog from "../../components/confirm-dialog/ConfirmDialog";
 
 function Home() {
+  const [openDelModal, setOpenDelModal] = useState(false);
+
+  const handleDelete = () => {
+    console.log("Recipe deleted!");
+  };
+
+  const handleOnClickEdit = () => {
+    setOpenDelModal(true);
+  };
+
   return (
     <Box width="100vw" height="100vh" bgcolor="#F5F7F7" position="relative">
       <NavBar></NavBar>
@@ -56,7 +67,7 @@ function Home() {
         </Box>
         <Container sx={{ pt: "40px" }}>
           <Grid container spacing={5}>
-            <RecipeCard></RecipeCard>
+            <RecipeCard onClickDelete={handleOnClickEdit}></RecipeCard>
             <RecipeCard></RecipeCard>
             <RecipeCard></RecipeCard>
             <RecipeCard></RecipeCard>
@@ -64,6 +75,11 @@ function Home() {
           </Grid>
         </Container>
       </Box>
+      <ConfirmDialog
+        open={openDelModal}
+        onClose={() => setOpenDelModal(false)}
+        onConfirm={handleDelete}
+      ></ConfirmDialog>
     </Box>
   );
 }
