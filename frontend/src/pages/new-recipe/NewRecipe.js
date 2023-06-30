@@ -9,8 +9,12 @@ import {
 import React from "react";
 import NavBar from "../../components/nav-bar/NavBar";
 import backImg from "../../assets/img/food-table.png";
+import RecipeDataForm from "../../components/recipe-data-form/RecipeDataForm";
 
 function NewRecipe() {
+  const handleSubmit = (formData) => {
+    console.log(formData);
+  };
   return (
     <Box width="100vw" height="100vh" bgcolor="#F5F7F7" position="relative">
       <NavBar nav />
@@ -45,49 +49,7 @@ function NewRecipe() {
           </Stack>
         </Box>
         <Container>
-          <Box
-            justifyContent="center"
-            display="flex"
-            width="100%"
-            height="fit-content"
-          >
-            <Box width="60%" height="100%" bgcolor="white" p={5} pt={0}>
-              <Stack direction="column">
-                <Typography variant="body1" pt={5}>
-                  Recipe Name
-                </Typography>
-                <TextField
-                  hiddenLabel
-                  variant="outlined"
-                  id="recipeName"
-                  size="small"
-                ></TextField>
-                <Typography variant="body1" pt={5}>
-                  Ingredients
-                </Typography>
-                <TextField
-                  hiddenLabel
-                  variant="outlined"
-                  id="recipeIngredients"
-                  size="small"
-                ></TextField>
-                <Typography variant="body1" pt={5}>
-                  Description
-                </Typography>
-                <TextField
-                  hiddenLabel
-                  multiline
-                  id="recipeDescription"
-                  variant="outlined"
-                  size="small"
-                  rows={10}
-                ></TextField>
-                <Button variant="contained" sx={{ mt: 5, color: "white" }}>
-                  SAVE
-                </Button>
-              </Stack>
-            </Box>
-          </Box>
+          <RecipeDataForm onSubmit={handleSubmit}></RecipeDataForm>
         </Container>
       </Box>
     </Box>
