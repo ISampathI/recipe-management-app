@@ -36,7 +36,7 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE", data = initData }) {
               Recipe Name
             </Typography>
             <TextField
-              error={formik.errors.name}
+              error={formik.errors.name?.length > 0}
               hiddenLabel
               variant="outlined"
               id="recipeName"
@@ -44,13 +44,15 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE", data = initData }) {
               name="name"
               value={formik.values.name}
               onChange={formik.handleChange}
-              helperText={formik.errors.name ? formik.errors.name : ""}
+              helperText={
+                formik.errors.name?.length > 0 ? formik.errors.name : ""
+              }
             ></TextField>
             <Typography variant="body1" pt={3}>
               Ingredients
             </Typography>
             <TextField
-              error={formik.errors.ingredients}
+              error={formik.errors.ingredients?.length > 0}
               hiddenLabel
               variant="outlined"
               id="recipeIngredients"
@@ -59,14 +61,16 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE", data = initData }) {
               value={formik.values.ingredients}
               onChange={formik.handleChange}
               helperText={
-                formik.errors.ingredients ? formik.errors.ingredients : ""
+                formik.errors.ingredients?.length > 0
+                  ? formik.errors.ingredients
+                  : ""
               }
             ></TextField>
             <Typography variant="body1" pt={3}>
               Description
             </Typography>
             <TextField
-              error={formik.errors.description}
+              error={formik.errors.description?.length > 0}
               hiddenLabel
               multiline
               id="recipeDescription"
@@ -77,7 +81,9 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE", data = initData }) {
               value={formik.values.description}
               onChange={formik.handleChange}
               helperText={
-                formik.errors.description ? formik.errors.description : ""
+                formik.errors.description?.length > 0
+                  ? formik.errors.description
+                  : ""
               }
             ></TextField>
             <Button
