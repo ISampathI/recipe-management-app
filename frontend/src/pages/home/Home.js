@@ -21,26 +21,13 @@ import axios from "axios";
 import { setRecipes } from "../../redux/actions/recipeActions";
 
 function Home() {
-  const [openDelModal, setOpenDelModal] = useState(false);
-  const [greetingMessage, setGreetingMessage] = useState(false);
-
-  const recipes = useSelector((state) => state.recipes);
-  const recipe = useSelector((state) => state.selectedRecipe);
+  const recipes = useSelector((state) => state.recipes); // Retrieve the recipes from the Redux store
+  const recipe = useSelector((state) => state.selectedRecipe); // Retrieve the selected recipe from the Redux store
   const dispatch = useDispatch();
 
-  const setGreeting = () => {
-    const currentHour = new Date().getHours();
-    if (currentHour >= 5 && currentHour < 12) {
-      setGreetingMessage("MORNING");
-    } else if (currentHour >= 12 && currentHour < 18) {
-      setGreetingMessage("AFTERNOON");
-    } else if (currentHour >= 18 && currentHour < 22) {
-      setGreetingMessage("EVENING");
-    } else {
-      setGreetingMessage("NIGHT");
-    }
-  };
+  const [openDelModal, setOpenDelModal] = useState(false); // Flag to control the visibility of the deletion modal
 
+  // Function for send a GET request to get all recipes
   const getRecipes = async () => {
     await axios
       .get(`${API_ADDRESS}/recipes`)
@@ -53,10 +40,11 @@ function Home() {
   };
 
   useEffect(() => {
-    setGreeting();
+    // Fetch recipes when the component mounts
     getRecipes();
   }, []);
 
+  // Function for send a DELETE request to delete selected recipe
   const handleDelete = async () => {
     let id = recipe._id;
     await axios
@@ -106,7 +94,7 @@ function Home() {
               color="white"
               fontWeight="bold"
             >
-              {`HI GOOD ${greetingMessage}`}
+              HI WELCOME BACK
             </Typography>
             <Typography variant="body1" color="white">
               Total recipies: {recipes?.length || 0}
@@ -119,6 +107,7 @@ function Home() {
             spacing={5}
             justifyContent={{ xxs: "center", sm: "start" }}
           >
+            {/* Render RecipeCard components for each recipe */}
             {recipes.map((recipe, index) => {
               return (
                 <RecipeCard
@@ -133,6 +122,7 @@ function Home() {
           </Grid>
         </Container>
       </Box>
+      {/* Confirmation dialog for deleting an item*/}
       <ConfirmDialog
         open={openDelModal}
         onClose={() => setOpenDelModal(false)}

@@ -15,8 +15,9 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRecipe } from "../../redux/actions/recipeActions";
 
+// RecipeCard component for rendering a card with recipe information
 function RecipeCard({ onClickEdit, onClickDelete, data }) {
-  const recipe = useSelector((state) => state.selectedRecipe);
+  const recipe = useSelector((state) => state.selectedRecipe); // Retrieve recipes from the Redux store
   const dispatch = useDispatch();
 
   return (

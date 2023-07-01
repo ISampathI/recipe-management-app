@@ -16,17 +16,18 @@ import { API_ADDRESS } from "../../utils/helpers";
 import SnackBar from "../../components/snack-bar/SnackBar";
 
 function EditRecipe() {
-  const recipe = useSelector((state) => state.selectedRecipe);
+  const recipe = useSelector((state) => state.selectedRecipe); // Retrieve the selected recipe from the Redux store
   const dispatch = useDispatch();
 
   const [snackBarOpen, setSnackBarOpen] = useState({
-    status: false,
-    message: "Ok",
-    severity: "success",
+    status: false, // Flag to control the visibility of the Snackbar
+    message: "Ok", // Message to be displayed in the Snackbar
+    severity: "success", // Severity level of the Snackbar (success, error, warning, ..)
   });
 
+  // Function for send a PUT request to update a recipe
   const handleSubmit = async (formData) => {
-    let id = recipe._id;
+    let id = recipe._id; // Id of selected recipe
     await axios
       .put(`${API_ADDRESS}/recipes/${id}`, formData)
       .then((res) => {
@@ -46,6 +47,7 @@ function EditRecipe() {
         console.log(error);
       });
   };
+
   return (
     <Box width="100vw" height="100vh" bgcolor="#F5F7F7" position="relative">
       <NavBar nav />
@@ -74,7 +76,12 @@ function EditRecipe() {
             justifyContent="center"
             alignItems="center"
           >
-            <Typography variant="h3" zIndex="1" color="white" textAlign="center">
+            <Typography
+              variant="h3"
+              zIndex="1"
+              color="white"
+              textAlign="center"
+            >
               EDIT THE RECIPE
             </Typography>
           </Stack>

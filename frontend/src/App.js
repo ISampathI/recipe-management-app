@@ -6,6 +6,7 @@ import NewRecipe from "./pages/new-recipe/NewRecipe";
 import EditRecipe from "./pages/edit-recipe/EditRecipe";
 import ViewRecipe from "./pages/view-recipe/ViewRecipe";
 
+//MUI theam customization
 const theme = createTheme({
   palette: {
     primary: { main: "#5BC18F" },
@@ -19,11 +20,12 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
+        {/* Routing */}
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/add" element={<NewRecipe />}></Route>
-          <Route path="/edit" element={<EditRecipe />}></Route>
-          <Route path="/view" element={<ViewRecipe />}></Route>
+          <Route path="/" element={<Home />}></Route> {/* Home page */}
+          <Route path="/add" element={<NewRecipe />}></Route> {/* Add recipe page */}
+          <Route path="/edit" element={<EditRecipe />}></Route> {/* Edit recipe page */}
+          <Route path="/view" element={<ViewRecipe />}></Route> {/* View recipe page */}
         </Routes>
       </div>
     </ThemeProvider>

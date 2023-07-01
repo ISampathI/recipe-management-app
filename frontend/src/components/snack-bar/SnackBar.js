@@ -1,6 +1,7 @@
 import { Alert, Snackbar } from "@mui/material";
 import React from "react";
 
+// Snackbar component for displaying feedback messages
 function SnackBar({ onClose, open, severity = "success", message }) {
   return (
     <Snackbar

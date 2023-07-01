@@ -12,7 +12,9 @@ import NavBar from "../../components/nav-bar/NavBar";
 import backImg from "../../assets/img/food-table.png";
 import { useDispatch, useSelector } from "react-redux";
 
+// Component for displaying a single recipe
 function ViewRecipe() {
+  // Retrieve the selectedRecipe from the Redux store
   const recipe = useSelector((state) => state.selectedRecipe);
   const dispatch = useDispatch();
 
@@ -45,7 +47,7 @@ function ViewRecipe() {
             alignItems="center"
           >
             <Typography
-              variant="h2"
+              variant="h3"
               zIndex="1"
               color="white"
               textAlign="center"
@@ -73,6 +75,7 @@ function ViewRecipe() {
                 </Typography>
 
                 <List sx={{ p: 0 }}>
+                  {/* Render a list item for each ingredient */}
                   {recipe?.ingredients.split(",").map((item) => (
                     <ListItem key={item} sx={{ m: 0, p: 0 }}>
                       <Typography variant="body2">- {item}</Typography>

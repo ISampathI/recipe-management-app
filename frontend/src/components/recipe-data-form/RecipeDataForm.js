@@ -1,14 +1,18 @@
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
+// RecipeDataForm component for rendering a form to input recipe data
 function RecipeDataForm({ onSubmit, btnName = "SAVE", data = {} }) {
+  // Set initial form values based on the data object
   const [formValues, setFormValues] = useState(data);
 
+  // Handle change event for input fields
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormValues({ ...formValues, [name]: value });
   };
 
+  // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit(formValues);
@@ -18,7 +22,7 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE", data = {} }) {
     <form onSubmit={handleSubmit}>
       <Box justifyContent="center" display="flex" width="100%">
         <Box
-          width={{xxs: "100%", xs: "90%", md: "60%" }}
+          width={{ xxs: "100%", xs: "90%", md: "60%" }}
           height="100%"
           bgcolor="white"
           p={5}

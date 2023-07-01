@@ -10,6 +10,7 @@ exports.getAllRecipes = async (req, res) => {
   }
 };
 
+// Get a recipe by ID
 exports.getRecipeById = async (req, res) => {
   const { id } = req.params;
   try {
@@ -23,6 +24,7 @@ exports.getRecipeById = async (req, res) => {
   }
 };
 
+// Create a new recipe
 exports.createRecipe = async (req, res) => {
   const { name, ingredients, description } = req.body;
   try {
@@ -37,6 +39,7 @@ exports.createRecipe = async (req, res) => {
   }
 };
 
+// Update a recipe by ID
 exports.updateRecipe = async (req, res) => {
   const { id } = req.params;
   const { name, ingredients, description } = req.body;
@@ -57,6 +60,7 @@ exports.updateRecipe = async (req, res) => {
   }
 };
 
+// Delete a recipe by ID
 exports.deleteRecipe = async (req, res) => {
   const { id } = req.params;
   try {
@@ -64,7 +68,7 @@ exports.deleteRecipe = async (req, res) => {
     if (!recipe) {
       res.status(404).json({ error: "Recipe not found" });
     }
-    res.status(200).json({ message: "Recipe deleted successfully" });
+    res.status(200).json(recipe);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

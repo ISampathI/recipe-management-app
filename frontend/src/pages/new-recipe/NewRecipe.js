@@ -7,13 +7,15 @@ import axios from "axios";
 import { API_ADDRESS } from "../../utils/helpers";
 import SnackBar from "../../components/snack-bar/SnackBar";
 
+// Component for create a new recipe
 function NewRecipe() {
   const [snackBarOpen, setSnackBarOpen] = useState({
-    status: false,
-    message: "Ok",
-    severity: "success",
+    status: false, // Flag to control the visibility of the Snackbar
+    message: "Ok", // Message to be displayed in the Snackbar
+    severity: "success", // Severity level of the Snackbar (success, error, warning, ..)
   });
 
+  // Function for send a POST request to add a new recipe
   const handleSubmit = async (formData) => {
     await axios
       .post(`${API_ADDRESS}/recipes/`, formData)
@@ -61,7 +63,12 @@ function NewRecipe() {
             justifyContent="center"
             alignItems="center"
           >
-            <Typography variant="h3" zIndex="1" color="white" textAlign="center">
+            <Typography
+              variant="h3"
+              zIndex="1"
+              color="white"
+              textAlign="center"
+            >
               ADD NEW RECIPE
             </Typography>
           </Stack>

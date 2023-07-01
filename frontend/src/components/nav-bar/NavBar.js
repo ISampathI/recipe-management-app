@@ -15,10 +15,12 @@ import { setRecipes } from "../../redux/actions/recipeActions";
 import axios from "axios";
 import { API_ADDRESS } from "../../utils/helpers";
 
+// NavBar component for rendering a navigation bar
 function NavBar({ nav = false }) {
   const recipes = useSelector((state) => state.recipes);
   const dispatch = useDispatch();
 
+  // Function for send a GET request to get all recipes. active when refresh button get clicked
   const getRecipes = async () => {
     await axios
       .get(`${API_ADDRESS}/recipes`)
