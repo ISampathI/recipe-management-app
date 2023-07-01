@@ -1,25 +1,28 @@
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 // RecipeDataForm component for rendering a form to input recipe data
 function RecipeDataForm({ onSubmit, btnName = "SAVE", data = {} }) {
-  // Set initial form values based on the data object
-  const [formValues, setFormValues] = useState(data);
-
-  // Handle change event for input fields
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormValues({ ...formValues, [name]: value });
-  };
-
-  // Handle form submission
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onSubmit(formValues);
-  };
-
+  // Handle the form data, submition and validations
+  const formik = useFormik({
+    initialValues: data,
+    validateOnBlur:false,
+    validateOnChange:false,
+    onSubmit: (values) => {
+      console.log(values);
+      onSubmit(values);
+    },
+    validationSchema: Yup.object({
+      name: Yup.string().required("required"),
+      ingredients: Yup.string().required("required"),
+      description: Yup.string().required("required"),
+    }),
+  });
+  console.log(formik.errors, formik.touched);
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={formik.handleSubmit}>
       <Box justifyContent="center" display="flex" width="100%">
         <Box
           width={{ xxs: "100%", xs: "90%", md: "60%" }}
@@ -33,30 +36,37 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE", data = {} }) {
               Recipe Name
             </Typography>
             <TextField
+              error={formik.errors.name}
               hiddenLabel
               variant="outlined"
               id="recipeName"
               size="small"
               name="name"
-              value={formValues["name"] || ""}
-              onChange={handleChange}
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              helperText={formik.errors.name ? formik.errors.name : ""}
             ></TextField>
-            <Typography variant="body1" pt={5}>
+            <Typography variant="body1" pt={3}>
               Ingredients
             </Typography>
             <TextField
+              error={formik.errors.ingredients}
               hiddenLabel
               variant="outlined"
               id="recipeIngredients"
               size="small"
               name="ingredients"
-              value={formValues["ingredients"] || ""}
-              onChange={handleChange}
+              value={formik.values.ingredients}
+              onChange={formik.handleChange}
+              helperText={
+                formik.errors.ingredients ? formik.errors.ingredients : ""
+              }
             ></TextField>
-            <Typography variant="body1" pt={5}>
+            <Typography variant="body1" pt={3}>
               Description
             </Typography>
             <TextField
+              error={formik.errors.description}
               hiddenLabel
               multiline
               id="recipeDescription"
@@ -64,8 +74,11 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE", data = {} }) {
               size="small"
               rows={10}
               name="description"
-              value={formValues["description"] || ""}
-              onChange={handleChange}
+              value={formik.values.description}
+              onChange={formik.handleChange}
+              helperText={
+                formik.errors.description ? formik.errors.description : ""
+              }
             ></TextField>
             <Button
               type="submit"
