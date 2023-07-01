@@ -25,8 +25,8 @@ function Home() {
   const [greetingMessage, setGreetingMessage] = useState(false);
 
   const recipes = useSelector((state) => state.recipes);
+  const recipe = useSelector((state) => state.selectedRecipe);
   const dispatch = useDispatch();
-  console.log(recipes);
 
   const setGreeting = () => {
     const currentHour = new Date().getHours();
@@ -46,7 +46,6 @@ function Home() {
       .get(`${API_ADDRESS}/recipes`)
       .then((res) => {
         dispatch(setRecipes(res.data));
-        console.log(res);
       })
       .catch((error) => {
         console.log(error);
@@ -56,14 +55,19 @@ function Home() {
   useEffect(() => {
     setGreeting();
     getRecipes();
-  }, [recipes]);
+  }, []);
 
-  const handleDelete = () => {
-    console.log("Recipe deleted!");
-  };
-
-  const handleOnClickEdit = () => {
-    setOpenDelModal(true);
+  const handleDelete = async () => {
+    let id = recipe._id;
+    await axios
+      .delete(`${API_ADDRESS}/recipes/${id}`)
+      .then((res) => {
+        console.log(res);
+        getRecipes();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -91,12 +95,12 @@ function Home() {
             px={10}
             height="100%"
             width="100%"
-            justifyContent="space-between"
+            justifyContent="center"
             alignItems="center"
-            direction="row"
+            direction="column"
             position="relative"
           >
-            <Typography variant="h2" color="white" fontWeight="bold">
+            <Typography textAlign="center" variant="h2" color="white" fontWeight="bold">
               {`HI GOOD ${greetingMessage}`}
             </Typography>
             <Typography variant="body1" color="white">
@@ -106,10 +110,13 @@ function Home() {
         </Box>
         <Container sx={{ pt: "40px" }}>
           <Grid container spacing={5}>
-            {recipes.map((recipe) => {
+            {recipes.map((recipe, index) => {
               return (
                 <RecipeCard
-                  onClickDelete={handleOnClickEdit}
+                  key={index}
+                  onClickDelete={() => {
+                    setOpenDelModal(true);
+                  }}
                   data={recipe}
                 ></RecipeCard>
               );

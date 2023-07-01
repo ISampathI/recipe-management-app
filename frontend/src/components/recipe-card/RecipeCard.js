@@ -25,7 +25,13 @@ function RecipeCard({ onClickEdit, onClickDelete, data }) {
         onClick={() => {
           dispatch(selectRecipe(data));
         }}
-        sx={{ p: "10px", px: "5px", height: "100%" }}
+        sx={{
+          p: "10px",
+          px: "5px",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+        }}
       >
         <Link to="/view" style={{ all: "unset", cursor: "pointer" }}>
           <CardMedia
@@ -39,17 +45,22 @@ function RecipeCard({ onClickEdit, onClickDelete, data }) {
               {data.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {data.description}
+              {data.description.slice(0, 150)}...
             </Typography>
           </CardContent>
         </Link>
-        <CardActions>
+        <CardActions disableSpacing sx={{ mt: "auto" }}>
           <Link to="/edit" style={{ textDecoration: "none" }}>
             <IconButton onClick={onClickEdit}>
               <EditNoteIcon></EditNoteIcon>
             </IconButton>
           </Link>
-          <IconButton onClick={onClickDelete}>
+          <IconButton
+            onClick={() => {
+              console.log("sss", data._id);
+              onClickDelete(data._id);
+            }}
+          >
             <DeleteOutlineIcon sx={{ color: "error.main" }}></DeleteOutlineIcon>
           </IconButton>
         </CardActions>

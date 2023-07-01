@@ -1,18 +1,38 @@
-import {
-  Box,
-  Container,
-  Stack,
-  Typography,
-} from "@mui/material";
-import React from "react";
+import { Box, Container, Stack, Typography } from "@mui/material";
+import React, { useState } from "react";
 import NavBar from "../../components/nav-bar/NavBar";
 import backImg from "../../assets/img/food-table.png";
 import RecipeDataForm from "../../components/recipe-data-form/RecipeDataForm";
+import axios from "axios";
+import { API_ADDRESS } from "../../utils/helpers";
+import SnackBar from "../../components/snack-bar/SnackBar";
 
 function NewRecipe() {
-  const handleSubmit = (formData) => {
-    console.log(formData);
+  const [snackBarOpen, setSnackBarOpen] = useState({
+    status: false,
+    message: "Ok",
+    severity: "success",
+  });
+
+  const handleSubmit = async (formData) => {
+    await axios
+      .post(`${API_ADDRESS}/recipes/`, formData)
+      .then((res) => {
+        setSnackBarOpen({
+          message: "successfully added!",
+          severity: "success",
+          status: true,
+        });
+      })
+      .catch((error) => {
+        setSnackBarOpen({
+          message: "Insertion failed!",
+          severity: "error",
+          status: true,
+        });
+      });
   };
+
   return (
     <Box width="100vw" height="100vh" bgcolor="#F5F7F7" position="relative">
       <NavBar nav />
@@ -50,6 +70,17 @@ function NewRecipe() {
           <RecipeDataForm onSubmit={handleSubmit}></RecipeDataForm>
         </Container>
       </Box>
+      <SnackBar
+        onClose={() => {
+          setSnackBarOpen((prevState) => ({
+            ...prevState,
+            status: false,
+          }));
+        }}
+        severity={snackBarOpen.severity}
+        open={snackBarOpen.status}
+        message={snackBarOpen.message}
+      ></SnackBar>
     </Box>
   );
 }

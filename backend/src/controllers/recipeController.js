@@ -40,16 +40,18 @@ exports.createRecipe = async (req, res) => {
 exports.updateRecipe = async (req, res) => {
   const { id } = req.params;
   const { name, ingredients, description } = req.body;
+  console.log(req.body);
   try {
     const recipe = await Recipe.findByIdAndUpdate(
       id,
       { name, ingredients, description },
       { new: true }
     );
-    if (!recipe) {
-      return res.status(404).json({ error: "Recipe not found" });
+    if (recipe) {
+      res.status(200).json(recipe);
+    } else {
+      res.status(404).json({ error: "Recipe not found" });
     }
-    res.status(200).json(recipe);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -60,7 +62,7 @@ exports.deleteRecipe = async (req, res) => {
   try {
     const recipe = await Recipe.findByIdAndDelete(id);
     if (!recipe) {
-      return res.status(404).json({ error: "Recipe not found" });
+      res.status(404).json({ error: "Recipe not found" });
     }
     res.status(200).json({ message: "Recipe deleted successfully" });
   } catch (error) {
