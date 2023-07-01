@@ -17,7 +17,7 @@ function RecipeCard({ onClickEdit, onClickDelete }) {
   return (
     <Grid item xs={6} md={4} lg={3}>
       <Card sx={{ p: "10px", px: "5px" }}>
-        <Link to="/view" style={{ textDecoration: "none"}}>
+        <Link to="/view" style={{ all: "unset", cursor:"pointer"}}>
           <CardMedia
             component="img"
             height="150px"
