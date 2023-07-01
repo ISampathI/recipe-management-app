@@ -31,13 +31,13 @@ function Home() {
   const setGreeting = () => {
     const currentHour = new Date().getHours();
     if (currentHour >= 5 && currentHour < 12) {
-      setGreetingMessage("Morning");
+      setGreetingMessage("MORNING");
     } else if (currentHour >= 12 && currentHour < 18) {
-      setGreetingMessage("Afternoon");
+      setGreetingMessage("AFTERNOON");
     } else if (currentHour >= 18 && currentHour < 22) {
-      setGreetingMessage("Evening");
+      setGreetingMessage("EVENING");
     } else {
-      setGreetingMessage("Night");
+      setGreetingMessage("NIGHT");
     }
   };
 
@@ -56,7 +56,7 @@ function Home() {
   useEffect(() => {
     setGreeting();
     getRecipes();
-  }, []);
+  }, [recipes]);
 
   const handleDelete = () => {
     console.log("Recipe deleted!");
@@ -100,7 +100,7 @@ function Home() {
               {`HI GOOD ${greetingMessage}`}
             </Typography>
             <Typography variant="body1" color="white">
-              Total recipies: 10
+              Total recipies: {recipes?.length || 0}
             </Typography>
           </Stack>
         </Box>

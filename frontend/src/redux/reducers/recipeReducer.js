@@ -8,3 +8,12 @@ export const recipeReducer = (state = [], { type, payload }) => {
       return state;
   }
 };
+
+export const selectedRecipeReducer = (state = {}, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.SELECT_RECIPE:
+      return payload;
+    default:
+      return state;
+  }
+};

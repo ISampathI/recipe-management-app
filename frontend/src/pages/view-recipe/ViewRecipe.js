@@ -10,8 +10,12 @@ import {
 import React from "react";
 import NavBar from "../../components/nav-bar/NavBar";
 import backImg from "../../assets/img/food-table.png";
+import { useDispatch, useSelector } from "react-redux";
 
 function ViewRecipe() {
+  const recipe = useSelector((state) => state.selectedRecipe);
+  const dispatch = useDispatch();
+
   return (
     <Box width="100vw" height="100vh" bgcolor="#F5F7F7" position="relative">
       <NavBar nav />
@@ -41,7 +45,7 @@ function ViewRecipe() {
             alignItems="center"
           >
             <Typography variant="h2" zIndex="1" color="white">
-            LET'S COOK
+              LET'S COOK
             </Typography>
           </Stack>
         </Box>
@@ -52,32 +56,26 @@ function ViewRecipe() {
                 <Typography variant="body1" pt={5}>
                   Recipe Name
                 </Typography>
-                <Typography variant="body2">Spaghetti Bolognese</Typography>
+                <Typography variant="body2">{recipe?.name || "-"}</Typography>
                 <Typography variant="body1" pt={5}>
                   Ingredients
                 </Typography>
 
                 <List sx={{ p: 0 }}>
-                  {"Ground beef, onion, garlic, tomato sauce, tomato paste, spaghetti, olive oil, salt, pepper, grated Parmesan cheese"
-                    .split(",")
-                    .map((item) => (
-                      <ListItem key={item} sx={{ m: 0, p: 0 }}>
-                        <Typography variant="body2">
-                          - Line item {item}
-                        </Typography>
-                      </ListItem>
-                    ))}
+                  {recipe?.ingredients.split(",").map((item) => (
+                    <ListItem key={item} sx={{ m: 0, p: 0 }}>
+                      <Typography variant="body2">
+                        - {item}
+                      </Typography>
+                    </ListItem>
+                  ))}
                 </List>
 
                 <Typography variant="body1" pt={5}>
                   Description
                 </Typography>
                 <Typography variant="body2">
-                  Classic Italian dish with rich meaty sauce. Brown ground beef
-                  with onion and garlic in olive oil. Add tomato sauce and
-                  paste, simmer for 20 minutes. Cook spaghetti separately and
-                  toss with the sauce. Serve hot, topped with grated Parmesan
-                  cheese.
+                  {recipe?.description || "-"}
                 </Typography>
               </Stack>
             </Box>

@@ -12,11 +12,21 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import recipeImg from "../../assets/img/recipe.png";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectRecipe } from "../../redux/actions/recipeActions";
 
 function RecipeCard({ onClickEdit, onClickDelete, data }) {
+  const recipe = useSelector((state) => state.selectedRecipe);
+  const dispatch = useDispatch();
+
   return (
     <Grid item xs={6} md={4} lg={3}>
-      <Card sx={{ p: "10px", px: "5px" }}>
+      <Card
+        onClick={() => {
+          dispatch(selectRecipe(data));
+        }}
+        sx={{ p: "10px", px: "5px", height: "100%" }}
+      >
         <Link to="/view" style={{ all: "unset", cursor: "pointer" }}>
           <CardMedia
             component="img"

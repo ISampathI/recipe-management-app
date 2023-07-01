@@ -1,8 +1,8 @@
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-function RecipeDataForm({ onSubmit, btnName = "SAVE" }) {
-  const [formValues, setFormValues] = useState({});
+function RecipeDataForm({ onSubmit, btnName = "SAVE", data = {} }) {
+  const [formValues, setFormValues] = useState(data);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -13,13 +13,10 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE" }) {
     event.preventDefault();
     onSubmit(formValues);
   };
+
   return (
     <form onSubmit={handleSubmit}>
-      <Box
-        justifyContent="center"
-        display="flex"
-        width="100%"
-      >
+      <Box justifyContent="center" display="flex" width="100%">
         <Box width="60%" height="100%" bgcolor="white" p={5} pt={0}>
           <Stack direction="column">
             <Typography variant="body1" pt={5}>
@@ -31,7 +28,7 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE" }) {
               id="recipeName"
               size="small"
               name="name"
-              value={formValues["recipeName"] || ""}
+              value={formValues["name"] || ""}
               onChange={handleChange}
             ></TextField>
             <Typography variant="body1" pt={5}>
@@ -43,7 +40,7 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE" }) {
               id="recipeIngredients"
               size="small"
               name="ingredients"
-              value={formValues["recipeIngredients"] || ""}
+              value={formValues["ingredients"] || ""}
               onChange={handleChange}
             ></TextField>
             <Typography variant="body1" pt={5}>
@@ -57,10 +54,14 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE" }) {
               size="small"
               rows={10}
               name="description"
-              value={formValues["recipeDescription"] || ""}
+              value={formValues["description"] || ""}
               onChange={handleChange}
             ></TextField>
-            <Button type="submit" variant="contained" sx={{ mt: 5, color: "white" }}>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{ mt: 5, color: "white" }}
+            >
               {btnName}
             </Button>
           </Stack>

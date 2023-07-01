@@ -1,15 +1,14 @@
-import {
-  Box,
-  Container,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import React from "react";
 import NavBar from "../../components/nav-bar/NavBar";
 import backImg from "../../assets/img/food-table.png";
 import RecipeDataForm from "../../components/recipe-data-form/RecipeDataForm";
+import { useDispatch, useSelector } from "react-redux";
 
 function EditRecipe() {
+  const recipe = useSelector((state) => state.selectedRecipe);
+  const dispatch = useDispatch();
+
   const handleSubmit = (formData) => {
     console.log(formData);
   };
@@ -47,7 +46,11 @@ function EditRecipe() {
           </Stack>
         </Box>
         <Container>
-          <RecipeDataForm onSubmit={handleSubmit} btnName="UPDATE"></RecipeDataForm>
+          <RecipeDataForm
+            onSubmit={handleSubmit}
+            btnName="UPDATE"
+            data={recipe}
+          ></RecipeDataForm>
         </Container>
       </Box>
     </Box>

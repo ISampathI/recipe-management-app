@@ -10,8 +10,27 @@ import React from "react";
 import LunchDiningIcon from "@mui/icons-material/LunchDining";
 import SyncIcon from "@mui/icons-material/Sync";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setRecipes } from "../../redux/actions/recipeActions";
+import axios from "axios";
+import { API_ADDRESS } from "../../utils/helpers";
 
 function NavBar({ nav = false }) {
+  const recipes = useSelector((state) => state.recipes);
+  const dispatch = useDispatch();
+
+  const getRecipes = async () => {
+    await axios
+      .get(`${API_ADDRESS}/recipes`)
+      .then((res) => {
+        dispatch(setRecipes(res.data));
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <AppBar color="background" elevation="0" position="static">
       <Toolbar>
@@ -33,7 +52,12 @@ function NavBar({ nav = false }) {
         </Link>
         {!nav && (
           <>
-            <IconButton sx={{ ml: "auto" }}>
+            <IconButton
+              sx={{ ml: "auto" }}
+              onClick={() => {
+                getRecipes();
+              }}
+            >
               <SyncIcon></SyncIcon>
             </IconButton>
             <Link style={{ textDecoration: "none" }} to="/add">
