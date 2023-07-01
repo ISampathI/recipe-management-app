@@ -1,5 +1,5 @@
 ## ReciSave (Recipe Management Application)
-ReciSave is a Recipe Management System built with the MERN (MongoDB, Express, React, Node.js) stack. It allows users to create, view, edit, and delete recipes, providing a convenient way to organize and manage their favorite recipes. The system leverages React for the frontend, Node.js and Express for the backend, and MongoDB as the database. The user interface is designed using the Material-UI framework, offering a modern and intuitive experience for recipe management.
+ReciSave is a Recipe Management System built with the MERN (MongoDB, Express, React, Node.js) stack. It allows users to create, view, edit, and delete recipes, providing a convenient way to organize and manage their favorite recipes. The system leverages React for the frontend, along with Redux for state management, enabling efficient data handling and seamless user interactions. On the backend, Node.js and Express handle the server-side logic, while MongoDB serves as the database for storing recipe data. The user interface is designed using the Material-UI framework, offering a modern and intuitive experience for recipe management.
 
 ### Features
 - User-friendly interface for managing recipes
