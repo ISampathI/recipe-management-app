@@ -42,7 +42,7 @@ function RecipeCard({ onClickEdit, onClickDelete, data }) {
             sx={{ objectFit: "contain" }}
           ></CardMedia>
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography noWrap gutterBottom variant="h5" component="div">
               {data.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">

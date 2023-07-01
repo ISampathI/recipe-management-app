@@ -92,12 +92,11 @@ function Home() {
               textAlign="center"
               variant="h3"
               color="white"
-              fontWeight="bold"
             >
               HI WELCOME BACK
             </Typography>
             <Typography variant="body1" color="white">
-              Total recipies: {recipes?.length || 0}
+              Total recipes: {recipes?.length || 0}
             </Typography>
           </Stack>
         </Box>
