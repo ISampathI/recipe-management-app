@@ -11,13 +11,13 @@ ReciSave is a Recipe Management System built with the MERN (MongoDB, Express, Re
 ### Screenshots
 
 #### Home Page
-![ScreenShot](/frontend/screenshots/screenshot1.png)
+![ScreenShot](/frontend/screenshots/screenshot1.JPG)
 
 #### Recipe details page
-![ScreenShot](/frontend/screenshots/screenshot2.png)
+![ScreenShot](/frontend/screenshots/screenshot2.JPG)
 
 #### Recipe Edit page
-![ScreenShot](/frontend/screenshots/screenshot3.png)
+![ScreenShot](/frontend/screenshots/screenshot3.JPG)
 
 ### Getting Started
 To run the ReciSave application locally, follow the steps below:
@@ -33,3 +33,8 @@ To run the ReciSave application locally, follow the steps below:
 - Install dependencies: npm install
 - Start the React development server: npm start
 - Open your browser and access the application at http://localhost:3000.
+
+### License
+This project is licensed under the MIT License.
+
+Feel free to customize this template to fit your needs and add more information about your project as necessary.
