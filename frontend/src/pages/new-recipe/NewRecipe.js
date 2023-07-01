@@ -61,7 +61,7 @@ function NewRecipe() {
             justifyContent="center"
             alignItems="center"
           >
-            <Typography variant="h2" zIndex="1" color="white">
+            <Typography variant="h3" zIndex="1" color="white" textAlign="center">
               ADD NEW RECIPE
             </Typography>
           </Stack>

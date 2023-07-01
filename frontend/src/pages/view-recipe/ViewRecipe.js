@@ -44,14 +44,25 @@ function ViewRecipe() {
             justifyContent="center"
             alignItems="center"
           >
-            <Typography variant="h2" zIndex="1" color="white">
+            <Typography
+              variant="h2"
+              zIndex="1"
+              color="white"
+              textAlign="center"
+            >
               LET'S COOK
             </Typography>
           </Stack>
         </Box>
         <Container>
           <Box justifyContent="center" display="flex" width="100%">
-            <Box width="60%" height="100%" bgcolor="white" p={5} pt={0}>
+            <Box
+              width={{ xxs: "95%", xs: "85%", sm: "70%", lg: "60%" }}
+              height="100%"
+              bgcolor="white"
+              p={5}
+              pt={0}
+            >
               <Stack direction="column">
                 <Typography variant="body1" pt={5}>
                   Recipe Name
@@ -64,9 +75,7 @@ function ViewRecipe() {
                 <List sx={{ p: 0 }}>
                   {recipe?.ingredients.split(",").map((item) => (
                     <ListItem key={item} sx={{ m: 0, p: 0 }}>
-                      <Typography variant="body2">
-                        - {item}
-                      </Typography>
+                      <Typography variant="body2">- {item}</Typography>
                     </ListItem>
                   ))}
                 </List>

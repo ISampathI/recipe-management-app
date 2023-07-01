@@ -20,7 +20,7 @@ function RecipeCard({ onClickEdit, onClickDelete, data }) {
   const dispatch = useDispatch();
 
   return (
-    <Grid item xs={6} md={4} lg={3}>
+    <Grid item xxs={10} sm={6} md={4} lg={3}>
       <Card
         onClick={() => {
           dispatch(selectRecipe(data));

@@ -17,7 +17,13 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE", data = {} }) {
   return (
     <form onSubmit={handleSubmit}>
       <Box justifyContent="center" display="flex" width="100%">
-        <Box width="60%" height="100%" bgcolor="white" p={5} pt={0}>
+        <Box
+          width={{xxs: "100%", xs: "90%", md: "60%" }}
+          height="100%"
+          bgcolor="white"
+          p={5}
+          pt={0}
+        >
           <Stack direction="column">
             <Typography variant="body1" pt={5}>
               Recipe Name

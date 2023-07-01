@@ -100,7 +100,12 @@ function Home() {
             direction="column"
             position="relative"
           >
-            <Typography textAlign="center" variant="h2" color="white" fontWeight="bold">
+            <Typography
+              textAlign="center"
+              variant="h3"
+              color="white"
+              fontWeight="bold"
+            >
               {`HI GOOD ${greetingMessage}`}
             </Typography>
             <Typography variant="body1" color="white">
@@ -109,7 +114,11 @@ function Home() {
           </Stack>
         </Box>
         <Container sx={{ pt: "40px" }}>
-          <Grid container spacing={5}>
+          <Grid
+            container
+            spacing={5}
+            justifyContent={{ xxs: "center", sm: "start" }}
+          >
             {recipes.map((recipe, index) => {
               return (
                 <RecipeCard
