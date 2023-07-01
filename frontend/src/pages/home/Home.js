@@ -15,10 +15,18 @@ import NavBar from "../../components/nav-bar/NavBar";
 import backImg from "../../assets/img/food-table.png";
 import RecipeCard from "../../components/recipe-card/RecipeCard";
 import ConfirmDialog from "../../components/confirm-dialog/ConfirmDialog";
+import { useDispatch, useSelector } from "react-redux";
+import { API_ADDRESS } from "../../utils/helpers";
+import axios from "axios";
+import { setRecipes } from "../../redux/actions/recipeActions";
 
 function Home() {
   const [openDelModal, setOpenDelModal] = useState(false);
   const [greetingMessage, setGreetingMessage] = useState(false);
+
+  const recipes = useSelector((state) => state.recipes);
+  const dispatch = useDispatch();
+  console.log(recipes);
 
   const setGreeting = () => {
     const currentHour = new Date().getHours();
@@ -33,8 +41,21 @@ function Home() {
     }
   };
 
+  const getRecipes = async () => {
+    await axios
+      .get(`${API_ADDRESS}/recipes`)
+      .then((res) => {
+        dispatch(setRecipes(res.data));
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     setGreeting();
+    getRecipes();
   }, []);
 
   const handleDelete = () => {
@@ -85,11 +106,14 @@ function Home() {
         </Box>
         <Container sx={{ pt: "40px" }}>
           <Grid container spacing={5}>
-            <RecipeCard onClickDelete={handleOnClickEdit}></RecipeCard>
-            <RecipeCard></RecipeCard>
-            <RecipeCard></RecipeCard>
-            <RecipeCard></RecipeCard>
-            <RecipeCard></RecipeCard>
+            {recipes.map((recipe) => {
+              return (
+                <RecipeCard
+                  onClickDelete={handleOnClickEdit}
+                  data={recipe}
+                ></RecipeCard>
+              );
+            })}
           </Grid>
         </Container>
       </Box>

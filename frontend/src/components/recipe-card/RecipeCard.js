@@ -13,11 +13,11 @@ import EditNoteIcon from "@mui/icons-material/EditNote";
 import recipeImg from "../../assets/img/recipe.png";
 import { Link } from "react-router-dom";
 
-function RecipeCard({ onClickEdit, onClickDelete }) {
+function RecipeCard({ onClickEdit, onClickDelete, data }) {
   return (
     <Grid item xs={6} md={4} lg={3}>
       <Card sx={{ p: "10px", px: "5px" }}>
-        <Link to="/view" style={{ all: "unset", cursor:"pointer"}}>
+        <Link to="/view" style={{ all: "unset", cursor: "pointer" }}>
           <CardMedia
             component="img"
             height="150px"
@@ -26,11 +26,10 @@ function RecipeCard({ onClickEdit, onClickDelete }) {
           ></CardMedia>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              Lizard
+              {data.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
+              {data.description}
             </Typography>
           </CardContent>
         </Link>
