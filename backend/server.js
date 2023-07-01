@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const recipeRoutes = require("./src/routes/recipeRoutes");
 const port = 5000;
 
-const url = `mongodb+srv://sampath:Sampath123@cluster0.zikbkf9.mongodb.net/?retryWrites=true&w=majority`;
+const url = `mongodb+srv://sampath:Sampath123@cluster0.zikbkf9.mongodb.net/RMA-API?retryWrites=true&w=majority`;
 
 mongoose
   .connect(url)

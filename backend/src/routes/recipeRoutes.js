@@ -1,39 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const Recipe = require("../../src/models/recipeModel");
-//const recipeController = require("../controllers/recipeController");
+const recipeController = require("../../src/controllers/recipeController");
 
 // Get all recipes
-router.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+router.get("/", recipeController.getAllRecipes);
 
-router.get("/:id", (req, res) => {
-  res.send("Hello World!");
-});
+router.get("/:id", recipeController.getRecipeById);
 
-router.post("/", async (req, res) => {
-  try {
-    const recipe = await new Recipe({
-      name: "s0",
-      ingredients: "ss",
-      description: "bbb",
-    });
-    res.status(201).json(recipe);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+router.post("/", recipeController.createRecipe);
 
-router.put("/:id", (req, res) => {
-  res.send("Hello World!");
-});
+router.put("/:id", recipeController.updateRecipe);
 
-router.delete("/:id", (req, res) => {
-  res.send("Hello World!");
-});
-
-// Create a new recipe
-// router.post("/", recipeController.createRecipe);
+router.delete("/:id", recipeController.deleteRecipe);
 
 module.exports = router;

@@ -30,7 +30,7 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE" }) {
               variant="outlined"
               id="recipeName"
               size="small"
-              name="recipeName"
+              name="name"
               value={formValues["recipeName"] || ""}
               onChange={handleChange}
             ></TextField>
@@ -42,7 +42,7 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE" }) {
               variant="outlined"
               id="recipeIngredients"
               size="small"
-              name="recipeIngredients"
+              name="ingredients"
               value={formValues["recipeIngredients"] || ""}
               onChange={handleChange}
             ></TextField>
@@ -56,7 +56,7 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE" }) {
               variant="outlined"
               size="small"
               rows={10}
-              name="recipeDescription"
+              name="description"
               value={formValues["recipeDescription"] || ""}
               onChange={handleChange}
             ></TextField>
