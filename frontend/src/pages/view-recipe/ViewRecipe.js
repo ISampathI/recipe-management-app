@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import NavBar from "../../components/nav-bar/NavBar";
-import backImg from "../../assets/img/food-table.png";
+import backImg from "../../assets/img/food-table.webp";
 import { useDispatch, useSelector } from "react-redux";
 
 // Component for displaying a single recipe
@@ -76,7 +76,7 @@ function ViewRecipe() {
 
                 <List sx={{ p: 0 }}>
                   {/* Render a list item for each ingredient */}
-                  {recipe?.ingredients.split(",").map((item) => (
+                  {recipe?.ingredients?.split(",").map((item) => (
                     <ListItem key={item} sx={{ m: 0, p: 0 }}>
                       <Typography variant="body2">- {item}</Typography>
                     </ListItem>

@@ -12,7 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import NavBar from "../../components/nav-bar/NavBar";
-import backImg from "../../assets/img/food-table.png";
+import backImg from "../../assets/img/food-table.webp";
 import RecipeCard from "../../components/recipe-card/RecipeCard";
 import ConfirmDialog from "../../components/confirm-dialog/ConfirmDialog";
 import { useDispatch, useSelector } from "react-redux";
@@ -50,7 +50,6 @@ function Home() {
     await axios
       .delete(`${API_ADDRESS}/recipes/${id}`)
       .then((res) => {
-        console.log(res);
         getRecipes();
       })
       .catch((error) => {

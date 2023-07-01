@@ -26,7 +26,6 @@ function NavBar({ nav = false }) {
       .get(`${API_ADDRESS}/recipes`)
       .then((res) => {
         dispatch(setRecipes(res.data));
-        console.log(res);
       })
       .catch((error) => {
         console.log(error);
@@ -34,7 +33,7 @@ function NavBar({ nav = false }) {
   };
 
   return (
-    <AppBar color="background" elevation="0" position="static">
+    <AppBar color="background" elevation={0} position="static">
       <Toolbar>
         <Link style={{ textDecoration: "none" }} to="/">
           <Stack direction="row">
@@ -55,12 +54,12 @@ function NavBar({ nav = false }) {
         {!nav && (
           <>
             <IconButton
-              sx={{ ml: "auto" }}
+              sx={{ ml: "auto", mr: "15px" }}
               onClick={() => {
                 getRecipes();
               }}
             >
-              <SyncIcon></SyncIcon>
+              <SyncIcon ></SyncIcon>
             </IconButton>
             <Link style={{ textDecoration: "none" }} to="/add">
               <Button variant="contained" size="small" sx={{ color: "white" }}>

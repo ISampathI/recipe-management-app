@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import NavBar from "../../components/nav-bar/NavBar";
-import backImg from "../../assets/img/food-table.png";
+import backImg from "../../assets/img/food-table.webp";
 import RecipeDataForm from "../../components/recipe-data-form/RecipeDataForm";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -31,7 +31,6 @@ function EditRecipe() {
     await axios
       .put(`${API_ADDRESS}/recipes/${id}`, formData)
       .then((res) => {
-        console.log(res);
         setSnackBarOpen({
           message: "Successfully updated!",
           severity: "success",
@@ -44,7 +43,6 @@ function EditRecipe() {
           severity: "error",
           status: true,
         });
-        console.log(error);
       });
   };
 

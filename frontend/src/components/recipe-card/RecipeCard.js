@@ -10,7 +10,7 @@ import {
 import React from "react";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditNoteIcon from "@mui/icons-material/EditNote";
-import recipeImg from "../../assets/img/recipe.png";
+import recipeImg from "../../assets/img/recipe.webp";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRecipe } from "../../redux/actions/recipeActions";
@@ -21,7 +21,7 @@ function RecipeCard({ onClickEdit, onClickDelete, data }) {
   const dispatch = useDispatch();
 
   return (
-    <Grid item xxs={10} sm={6} md={4} lg={3}>
+    <Grid item xxs={10} sm={6} md={4} lg={3} sx={{":hover":{scale:"0.99"}, transition:"scale 0.3s ease"}}>
       <Card
         onClick={() => {
           dispatch(selectRecipe(data));
@@ -58,7 +58,6 @@ function RecipeCard({ onClickEdit, onClickDelete, data }) {
           </Link>
           <IconButton
             onClick={() => {
-              console.log("sss", data._id);
               onClickDelete(data._id);
             }}
           >

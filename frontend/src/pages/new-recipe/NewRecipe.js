@@ -1,7 +1,7 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
 import NavBar from "../../components/nav-bar/NavBar";
-import backImg from "../../assets/img/food-table.png";
+import backImg from "../../assets/img/food-table.webp";
 import RecipeDataForm from "../../components/recipe-data-form/RecipeDataForm";
 import axios from "axios";
 import { API_ADDRESS } from "../../utils/helpers";
@@ -74,7 +74,9 @@ function NewRecipe() {
           </Stack>
         </Box>
         <Container>
-          <RecipeDataForm onSubmit={handleSubmit}></RecipeDataForm>
+          <RecipeDataForm
+            onSubmit={handleSubmit}
+          ></RecipeDataForm>
         </Container>
       </Box>
       <SnackBar

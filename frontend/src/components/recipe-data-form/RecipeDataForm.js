@@ -3,15 +3,16 @@ import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+const initData = { name: "", ingredients: "", description: "" };
+
 // RecipeDataForm component for rendering a form to input recipe data
-function RecipeDataForm({ onSubmit, btnName = "SAVE", data = {} }) {
+function RecipeDataForm({ onSubmit, btnName = "SAVE", data = initData }) {
   // Handle the form data, submition and validations
   const formik = useFormik({
     initialValues: data,
-    validateOnBlur:false,
-    validateOnChange:false,
+    validateOnBlur: false,
+    validateOnChange: false,
     onSubmit: (values) => {
-      console.log(values);
       onSubmit(values);
     },
     validationSchema: Yup.object({
@@ -20,7 +21,6 @@ function RecipeDataForm({ onSubmit, btnName = "SAVE", data = {} }) {
       description: Yup.string().required("required"),
     }),
   });
-  console.log(formik.errors, formik.touched);
   return (
     <form onSubmit={formik.handleSubmit}>
       <Box justifyContent="center" display="flex" width="100%">
